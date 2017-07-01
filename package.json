@@ -11,5 +11,8 @@
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "js-yaml": "^3.6.1"
+  },
+  "devDependencies": {
+    "promise-rate-limit": "0.0.1"
   }
 }

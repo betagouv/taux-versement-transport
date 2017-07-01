@@ -1,6 +1,7 @@
 var fs = require('fs');
 require('isomorphic-fetch')
 yaml = require('js-yaml');
+const rateLimit = require('promise-rate-limit');
 
 var codesPostaux = fs.readFileSync(process.argv[2], 'utf8').split('\n')
 codesPostaux.pop()
@@ -24,7 +25,7 @@ const getget = codePostal => {
 		.then(response => response.json())
 }
 
-Promise.all(codesPostaux.map(getget)).then(results => {
+Promise.all(codesPostaux.map(rateLimit(30,60*1000,getget))).then(results => {
 	var valid = results
 		.filter(r => r.resultat.length > 2)
 		.map(r => JSON.parse(r.resultat))
