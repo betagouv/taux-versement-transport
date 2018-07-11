@@ -5,7 +5,8 @@ L'URSSAF met à disposition la table des taux à l'adresse : https://fichierdire
 
 ...MAIS : 
 - l'historique n'y est pas
-- les taux additionnels y sont tous à 0, ce qui rend les données erronées. 
+- les taux additionnels y étaient au moins jusqu'à début 2017, tous à 0, ce qui rend les données erronées. 
+- au 1er juillet 2018, les taux de cette table ne sont pas à jour (changements du 1er juillet 2018)
 
 L'URSSAF a été auparavant contactée plusieurs fois à ce sujet par plusieurs moyens différents, sans réponse.
 
