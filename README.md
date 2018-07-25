@@ -1,4 +1,4 @@
-Ce dépot permet de scrapper le widget de l'URSSAF (ou plus exactement son "API") donnant les taux de versement transport par commune :
+Ce dépot permet de scrapper le widget de l'URSSAF (ou plus exactement son "API" cachée) donnant les taux de versement transport par commune :
 https://www.urssaf.fr/portail/home/taux-et-baremes/versement-transport.html
 
 L'URSSAF met à disposition la table des taux à l'adresse : https://fichierdirect.declaration.urssaf.fr/TablesReference.htm
@@ -13,10 +13,11 @@ L'URSSAF a été auparavant contactée plusieurs fois à ce sujet par plusieurs 
 Ce travail a été fait suite à plusieurs remarques des utilisateurs du simulateur de coût d'embauche, signalant le caractère osbolète des taux de versement transport d'OpenFisca. 
 
 
+Utilisation
+----------------
 
+Mettre à jour le fichier des communes laposte, disponible en open data sur data.gouv.fr :  `laposte_hexasmal.csv.
 
+`collect.js` se base sur ce fichier pour produire `resultats.json`. **Attention**, choisissez un bridage des requêtes important (dans le code actuel, `rateLimit(1 REQUÊTE, PAR 300 MILLISECONDES)`) pour ne pas surcharger l'API.
 
-Les données à jour de la poste (laposte_hexasmal.csv) sur les codes commune / postal sont utilisés pour récupérer les taux de versement transport (collect.js).  
-Le fichier final est ensuite formé par transformToYaml.js.
-
-Il est disponible ici : https://github.com/openfisca/openfisca-france/blob/master/openfisca_france/assets/versement_transport/taux.json
+`transformToJson` produit le fichier `final.json`.
