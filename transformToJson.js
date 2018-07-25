@@ -1,5 +1,4 @@
 let fs = require("fs");
-yaml = require("js-yaml");
 
 let list = JSON.parse(fs.readFileSync("resultats.json", "utf8"));
 
@@ -14,13 +13,14 @@ let transformDate = string =>
     .reverse()
     .join("-");
 let acc = {};
-codes.forEach(string => {
-  console.log("code", string);
+codes.map((string, index) => {
+  console.log((index / codes.length) * 100);
   let split = string.split(";"),
     codeCommuneLaposte = split[0],
     nomLaposte = split[1],
     codePostal = split[2],
     found = list.find(({ codeCommune }) => codeCommuneLaposte === codeCommune);
+
   if (!found) {
     // Include some info anyway
     // acc[codeCommuneLaposte] = {
@@ -85,7 +85,5 @@ codes.forEach(string => {
       taux: tauxAdditionnel
     };
 });
-console.log("acc", acc);
 
-let y = yaml.dump(acc);
-fs.writeFileSync("./resultats.yaml", JSON.stringify(y));
+fs.writeFileSync("./final.json", JSON.stringify(acc));

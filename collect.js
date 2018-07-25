@@ -30,7 +30,7 @@ const getget = codePostal => {
 };
 
 let run = () =>
-  Promise.all(codesPostaux.map(rateLimit(100, 1000, getget))).then(results => {
+  Promise.all(codesPostaux.map(rateLimit(1, 300, getget))).then(results => {
     var valid = results
       .filter(r => r.resultat.length > 2)
       .map(r => JSON.parse(r.resultat))
