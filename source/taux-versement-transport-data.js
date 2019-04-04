@@ -1,4 +1,4 @@
-Code commune;Libellé;Taux AOT;Taux syndicat mixte;Date effet;Codes postaux afférents;
+export default `Code commune;Libellé;Taux AOT;Taux syndicat mixte;Date effet;Codes postaux afférents;
 '01004';HOTEL VILLE AMBERIEU-EN-BUGEY ;0.45;0;20100101;'01500';'01501';'01502';'01503';'01504';'01505';'01506';
 '01005';CC DOMBES SAONE-VALLEE ;0.6;0;20160701;'01330';
 '01021';CC DOMBES SAONE-VALLEE ;0.6;0;20160701;'01480';
@@ -11128,3 +11128,4 @@ Code commune;Libellé;Taux AOT;Taux syndicat mixte;Date effet;Codes postaux affér
 '97422';CA DU SUD ;1.8;0;20170701;'97418';'97430';'97831';'97834';'97835';'97836';'97837';'97838';'97839';
 '97423';CA COTE OUEST ;2;0;20170701;'97426';
 '97424';CA VILLES SOLIDAIRES ;2;0;20170701;'97413';
+`

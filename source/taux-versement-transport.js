@@ -1,10 +1,5 @@
-import yaml from "js-yaml";
-
-import fs from "fs";
 import Papa from "papaparse";
-let file = process.cwd() + "/taux-versement-transport.csv";
-let content = fs.readFileSync(file, "utf8");
-
+import content from "./taux-versement-transport-data.js";
 let rows;
 Papa.parse(content, {
 	header: false,
