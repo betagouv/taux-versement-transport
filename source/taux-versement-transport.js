@@ -2,7 +2,7 @@ import yaml from "js-yaml";
 
 import fs from "fs";
 import Papa from "papaparse";
-let file = "source/taux-versement-transport.csv";
+let file = process.cwd() + "/taux-versement-transport.csv";
 let content = fs.readFileSync(file, "utf8");
 
 let rows;
