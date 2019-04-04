@@ -14,17 +14,28 @@ Papa.parse(content, {
 		rows = results.data;
 	}
 });
+
+let headers = {
+	"Content-Type": "application/json;charset=utf-8",
+
+	"Access-Control-Allow-Origin": "*"
+};
 exports.handler = async (event, context) => {
 	let { codeCommune } = event.queryStringParameters;
 	let row = findRow(codeCommune);
+	if (!row)
+		return {
+			statusCode: 404,
+			headers,
+			body: JSON.stringify({
+				error: `Aucune donnée de versement transport trouvée pour cette commune de code : ${codeCommune}. Existe-t-elle vraiment ?`
+			})
+		};
 	let [, , tauxAOT, tauxSMT] = row;
+
 	return {
 		statusCode: 200,
-		headers: {
-			"Content-Type": "application/json;charset=utf-8",
-
-			"Access-Control-Allow-Origin": "*"
-		},
+		headers,
 		body: JSON.stringify({
 			taux: (
 				(Number(tauxAOT) + Number(tauxSMT)) /
