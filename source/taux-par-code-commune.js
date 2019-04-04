@@ -1,5 +1,10 @@
 import Papa from "papaparse";
 import content from "./taux-versement-transport-data.js";
+
+// This code is far from good, please do not hesitate to refactor it fully
+
+let findRow = codeCommune => rows.find(row => row[0] === `'${codeCommune}'`);
+
 let rows;
 Papa.parse(content, {
 	header: false,
@@ -11,6 +16,8 @@ Papa.parse(content, {
 });
 exports.handler = async (event, context) => {
 	let { codeCommune } = event.queryStringParameters;
+	let row = findRow(codeCommune);
+	let [, , tauxAOT, tauxSMT] = row;
 	return {
 		statusCode: 200,
 		headers: {
@@ -19,7 +26,10 @@ exports.handler = async (event, context) => {
 			"Access-Control-Allow-Origin": "*"
 		},
 		body: JSON.stringify({
-			taux: rows.find(row => row[0] === `'${codeCommune}'`)[2]
+			taux: (
+				(Number(tauxAOT) + Number(tauxSMT)) /
+				100
+			).toFixed(4)
 		})
 	};
 };
