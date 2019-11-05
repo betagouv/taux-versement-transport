@@ -3,14 +3,21 @@ import content from "./taux-versement-transport-data.js";
 
 // This code is far from good, please do not hesitate to refactor it fully
 
-let findRow = codeCommune => rows.find(row => row[0] === `'${codeCommune}'`);
+let findRow = (codeCommune, date) => {
+  let sortedByDate = rows
+    .filter(row => row[0] === `'${codeCommune}'`)
+    // the list can contain future dates
+    .filter(row => row[4] < date)
+    .sort((a, b) => +b[4] - +a[4]);
+
+  return sortedByDate[0];
+};
 
 let rows;
 Papa.parse(content, {
   header: false,
   delimiter: ";",
   complete: function(results) {
-    //console.log("Finished:", results.data);
     rows = results.data;
   }
 });
@@ -31,7 +38,13 @@ exports.handler = async (event, context) => {
     },
     codeCommune = correspondanceArrondissements[rawCode] || rawCode;
 
-  let row = findRow(codeCommune);
+  const today = new Date(),
+    dd = today.getDate(),
+    mm = today.getMonth() + 1, //January is 0!
+    yyyy = today.getFullYear(),
+    date = `${yyyy}${mm}${dd}`;
+
+  let row = findRow(codeCommune, date);
   if (!row)
     return {
       statusCode: 404,
