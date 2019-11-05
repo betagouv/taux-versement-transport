@@ -33,7 +33,7 @@ exports.handler = async (event, context) => {
     // ne dépendent pas de l'arrondissement. On en choisit donc un au hasard.
     correspondanceArrondissements = {
       "75056": "75120",
-      "69300": "69388",
+      "69123": "69388",
       "13055": "13203"
     },
     codeCommune = correspondanceArrondissements[rawCode] || rawCode;
