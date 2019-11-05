@@ -21,7 +21,12 @@ let headers = {
 	"Access-Control-Allow-Origin": "*"
 };
 exports.handler = async (event, context) => {
-	let { codeCommune } = event.queryStringParameters;
+	let { codeCommune: rawCode } = event.queryStringParameters, 
+		// Les données de versement transport n'ont pas d'entrée pour les villes à arrondissement. Or ces taux 
+		// ne dépendent pas de l'arrondissement. On en choisit donc un au hasard.
+		correspondanceArrondissements = {'75056': '75120', '69300': '69388', '13055':'13203' },
+	   	codeCommune = correspondanceArrondissements[rawCode] || rawCode
+	
 	let row = findRow(codeCommune);
 	if (!row)
 		return {
