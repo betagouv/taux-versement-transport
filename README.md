@@ -2,9 +2,15 @@
 
 Une API hyper basique permet de récupérer le taux SMT + AOT d'une commune : https://versement-transport.netlify.com/.netlify/functions/taux-par-code-commune?codeCommune=75120
 
+Elle fonctionne grâce aux Fonctions Netlify. **On met simplement à jour [un fichier JS](https://github.com/betagouv/taux-versement-transport/blob/master/source/taux-versement-transport-data.js) qui correspond au CSV des taux de versement transport fourni par l'URSSAF en XLSX. Pourquoi pas un CSV directement ? Car j'ai galéré à importer un CSV dans Netlify Functions à l'époque, à cause des loaders Webpack.
+
+Attention : avant chaque commit, il faut faire `yarn netlify-lambda build source/` (dans l'état actuel du dépôt, peut-être qu'il est possible de s'en passer).
+
+> 🔺 Le travail décrit ci-dessous n'est plus fait en 2019, car nous n'avons plus besoin de l'historique ni du fichier complet, juste de l'API
+
+
 # Données
 
-> Ce travail n'est plus fait en 2019, car nous n'avons plus besoin de l'historique ni du fichier complet, juste de l'API
 
 Ce dépot permet de scrapper le widget de l'URSSAF (ou plus exactement son "API" cachée) donnant les taux de versement transport par commune :
 https://www.urssaf.fr/portail/home/taux-et-baremes/versement-transport.html
