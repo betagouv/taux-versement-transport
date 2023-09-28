@@ -1,3 +1,7 @@
+# Archivé
+Le code relatif au téléchargement des taux de versement mobilité est intégré dans le repo mon-entreprise : 
+[https://github.com/betagouv/mon-entreprise/blob/master/site/scripts/fetch-versement-mobilit%C3%A9.js](Voir le fichier)
+
 # API
 
 Une API hyper basique permet de récupérer le taux SMT + AOT d'une commune : https://versement-transport.netlify.com/.netlify/functions/taux-par-code-commune?codeCommune=75120
