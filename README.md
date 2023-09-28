@@ -1,6 +1,6 @@
 # Archivé
 Le code relatif au téléchargement des taux de versement mobilité est intégré dans le repo mon-entreprise : 
-[https://github.com/betagouv/mon-entreprise/blob/master/site/scripts/fetch-versement-mobilit%C3%A9.js](Voir le fichier)
+[Voir le fichier](https://github.com/betagouv/mon-entreprise/blob/master/site/scripts/fetch-versement-mobilit%C3%A9.js)
 
 # API
 
